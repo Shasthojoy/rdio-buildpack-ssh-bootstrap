@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bin/detect <build-dir>
+
+if [ -a $1/.ssh ]; then
+  echo "RDIO ssh permissions repair" && exit 0
+else
+  echo "no" && exit 1
+fi
