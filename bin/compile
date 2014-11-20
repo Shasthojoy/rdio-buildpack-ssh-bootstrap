@@ -35,3 +35,4 @@ set +e
 chmod 600 $BUILD_DIR/.ssh/id_*
 set -e
 
+echo "HOME=$BUILD_DIR" > "$LP_DIR/export"
