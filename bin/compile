@@ -40,7 +40,7 @@ BINDIR=`mktemp -dt tmpbuildbindirXXXXXXXXXX`
 echo using $BINDIR | indent
 cat > "$BINDIR/ssh" <<EOF
 #!/bin/bash
-exec /usr/bin/ssh -F $BUILD_DIR/.ssh/config -i `ls -1 $BUILD_DIR/.ssh/id_ | grep -Fv .pub | head -n1` -o StrictHostKeyChecking=no "\$@"
+exec /usr/bin/ssh -F $BUILD_DIR/.ssh/config -i `ls -1 $BUILD_DIR/.ssh/id_* | grep -Fv .pub | head -n1` -o StrictHostKeyChecking=no "\$@"
 EOF
 chmod +x "$BINDIR/ssh"
 
