@@ -37,5 +37,5 @@ set -e
 
 topic "Setting HOME to $BUILD_DIR for .ssh"
 export HOME=$BUILD_DIR
-echo echo \"declare -x HOME=$BUILD_DIR\" > \"$LP_DIR/export\" | indent
+echo '"declare -x HOME=$BUILD_DIR" > "$LP_DIR/export"' | indent
 echo "declare -x HOME=$BUILD_DIR" > "$LP_DIR/export"
