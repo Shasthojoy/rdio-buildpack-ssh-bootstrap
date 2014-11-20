@@ -30,8 +30,8 @@ function indent() {
 }
 
 topic "Cleaning .ssh permissions"
-chmod 755 $HOME/.ssh
+chmod 755 $BUILD_DIR/.ssh
 set +e
-chmod 600 $HOME/.ssh/id_*
+chmod 600 $BUILD_DIR/.ssh/id_*
 set -e
 
