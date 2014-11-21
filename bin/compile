@@ -47,8 +47,12 @@ exec /usr/bin/ssh -F $BUILD_DIR/.ssh/config -o StrictHostKeyChecking=no "\$@"
 EOF
 chmod +x "$BINDIR/ssh"
 
+topic "setting build_dir in ssh config"
+sed -i 's/\$BUILD_DIR/'$BUILD_DIR'/' $BUILD_DIR/.ssh/config
+
 topic "Adding $BINDIR/ssh to $PATH"
 cat > "$LP_DIR/export" <<EOF
 PATH="$BINDIR${PATH:+:$PATH}"
 EOF
+
 cat "$LP_DIR/export" | indent
