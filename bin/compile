@@ -43,18 +43,7 @@ cat > "$BINDIR/ssh" <<EOF
 
 set -e 
 
-eval \`ssh-agent\`
-
-function agent_cleanup() {
-    kill -9 \$SSH_AGENT_PID
-}
-
-trap agent_cleanup EXIT
-
-for i in `ls -1 $BUILD_DIR/.ssh/id_* | grep -Fv .pub`; do
-    ssh-add \$i
-done
-/usr/bin/ssh -F $BUILD_DIR/.ssh/config -o StrictHostKeyChecking=no "\$@"
+exec /usr/bin/ssh -F $BUILD_DIR/.ssh/config -o StrictHostKeyChecking=no "\$@"
 EOF
 chmod +x "$BINDIR/ssh"
 
